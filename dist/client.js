@@ -1,14 +1,14 @@
 /*! airbrake-js v1.5.0 */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory((function webpackLoadOptionalExternalModule() { try { return require("os"); } catch(e) {} }()), require("isomorphic-fetch"));
+		module.exports = factory(require("isomorphic-fetch"));
 	else if(typeof define === 'function' && define.amd)
-		define(["os", "isomorphic-fetch"], factory);
+		define(["isomorphic-fetch"], factory);
 	else if(typeof exports === 'object')
-		exports["Client"] = factory((function webpackLoadOptionalExternalModule() { try { return require("os"); } catch(e) {} }()), require("isomorphic-fetch"));
+		exports["Client"] = factory(require("isomorphic-fetch"));
 	else
-		root["airbrakeJs"] = root["airbrakeJs"] || {}, root["airbrakeJs"]["Client"] = factory(root[undefined], root["fetch"]);
-})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_os__, __WEBPACK_EXTERNAL_MODULE_isomorphic_fetch__) {
+		root["airbrakeJs"] = root["airbrakeJs"] || {}, root["airbrakeJs"]["Client"] = factory(root["fetch"]);
+})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_isomorphic_fetch__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -298,6 +298,66 @@ var define = false;
     };
 }));
 
+
+
+/***/ }),
+
+/***/ "./node_modules/os-browserify/browser.js":
+/*!***********************************************!*\
+  !*** ./node_modules/os-browserify/browser.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+exports.endianness = function () { return 'LE' };
+
+exports.hostname = function () {
+    if (typeof location !== 'undefined') {
+        return location.hostname
+    }
+    else return '';
+};
+
+exports.loadavg = function () { return [] };
+
+exports.uptime = function () { return 0 };
+
+exports.freemem = function () {
+    return Number.MAX_VALUE;
+};
+
+exports.totalmem = function () {
+    return Number.MAX_VALUE;
+};
+
+exports.cpus = function () { return [] };
+
+exports.type = function () { return 'Browser' };
+
+exports.release = function () {
+    if (typeof navigator !== 'undefined') {
+        return navigator.appVersion;
+    }
+    return '';
+};
+
+exports.networkInterfaces
+= exports.getNetworkInterfaces
+= function () { return {} };
+
+exports.arch = function () { return 'javascript' };
+
+exports.platform = function () { return 'browser' };
+
+exports.tmpdir = exports.tmpDir = function () {
+    return '/tmp';
+};
+
+exports.EOL = '\n';
+
+exports.homedir = function () {
+	return '/'
+};
 
 
 /***/ }),
@@ -1445,7 +1505,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 function filter(notice) {
     var os;
     try {
-        os = __webpack_require__(/*! os */ "os");
+        os = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
     }
     catch (_) { }
     if (os) {
@@ -2686,18 +2746,6 @@ module.exports = __webpack_require__(/*! ./src/client.ts */"./src/client.ts");
 /***/ (function(module, exports) {
 
 module.exports = __WEBPACK_EXTERNAL_MODULE_isomorphic_fetch__;
-
-/***/ }),
-
-/***/ "os":
-/*!**************************************************************!*\
-  !*** external {"commonjs":"os","commonjs2":"os","amd":"os"} ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-if(typeof __WEBPACK_EXTERNAL_MODULE_os__ === 'undefined') {var e = new Error("Cannot find module 'undefined'"); e.code = 'MODULE_NOT_FOUND'; throw e;}
-module.exports = __WEBPACK_EXTERNAL_MODULE_os__;
 
 /***/ })
 

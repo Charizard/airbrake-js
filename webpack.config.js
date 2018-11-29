@@ -36,11 +36,6 @@ function newConfig() {
         amd: 'isomorphic-fetch',
         root: 'fetch'
       },
-      os: {
-        commonjs: 'os',
-        commonjs2: 'os',
-        amd: 'os'
-      },
       process: {
         commonjs: 'process',
         commonjs2: 'process',
